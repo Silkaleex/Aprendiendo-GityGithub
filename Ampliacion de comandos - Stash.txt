@@ -1,0 +1,44 @@
+
+Ampliación de comandos - Stash
+En este artículo vamos a ampliar la información sobre el stash. Ya hemos explicado a lo largo de los vídeos de esta sección del potente uso que tiene el stash y cómo afrontar posibles conflictos usando el stash sin ningún tipo de problema ni conflicto.
+
+Los comandos que hemos aprendido son los siguientes:
+
+git stash: Almacenamiento de los cambios realizados en la "pila de almacenamiento", para centrarse en otro campo y volver más adelante al punto anterior
+
+git stash list: Listar el orden de pila de los cambios en los archivos almacenados
+
+git stash pop: Toma un cambio almacenado, lo elimina de la "pila de almacenamiento" y lo aplica al árbol de trabajo actual
+
+git stash drop: Descartar los cambios de la parte superior de la "pila de almacenamiento"
+
+git stash show: Permite visualizar con detalles cada uno de los stash
+
+Veamos con más detalles algunos comandos aplicables sobre el desarrollo del uso del Stash:
+
+Con git stash drop podemos eliminar el último stash de la lista, no obstante, es posible que la "pila de almacenamiento" contenga más de un trabajo en progreso (WIP), con el comando git stash clear es posible eliminar todos los registros almacenados en la "pila de almacenamiento".
+
+A continuación, uno de los comandos más usados es el git stash apply con este es posible coger los cambios de un stash y aplicarlos al trabajo que estamos desarrollando y a la misma vez que sean almacenados en la "pila de almacenamiento" (lista de stash). Por ello, con este comando se selecciona concretamente el último stash de la pila, no obstante, es posible elegir los que nosotros queramos aplicar, por ello se usa el comando git stash apply [ID del stash]. La única diferencia es la existencia del ID del stash, ¿y qué es este ID?.
+
+Pues básicamente si listamos los stash de la pila veremos algo como:
+
+stash@{0}: WIP on main: 5002d47 our new homepage
+
+stash@{1}: WIP on main: 5002d47 our new homepage
+
+stash@{2}: WIP on main: 5002d47 our new homepage
+
+El ID de los stash previos son los siguientes respectivamente: stash@{0}, stash@{1} o stash@{2}.
+
+Así que, git stash apply stash@{1} aplicaría los cambios del stash de la lista con ese identificador a nuestros trabajo actual.
+
+Para continuar viendo el potencial de stash veamos como profundizar en detalle en los cambios que contiene un stash, por ello con el siguiente comando: git stash list --stat podemos tener las descripciones de cada uno de los stash de la "pila de almacenamiento". No obstante, con git stash show podemos visualizar con más detalles cada uno de estos.
+
+
+Con el comando git stash show -p se pueden ver incluso más detalles de estos:
+
+
+Por si fuera poco es posible crear una rama a partir de un stash, con el comando: git stash branch [nombre de la rama] [ID-stash]
+
+
+De esta forma, se crea una rama nueva a partir de un stash, y con el comando previo debemos indicar el nombre de la rama que queremos crear y identificar el stash con su identificador.
